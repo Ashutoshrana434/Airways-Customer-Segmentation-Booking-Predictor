@@ -1,112 +1,213 @@
-# British Airways Job Simulation
+# ✈️ Airways Customer Segmentation & Booking Predictor  
 
-## 📌 Overview
+> End-to-End Machine Learning Project combining Customer Review Analysis, Segmentation & Booking Prediction
 
-This project was completed as part of the **British Airways Virtual Experience Program** on Forage.  
-It focuses on web scraping, data cleaning, exploratory data analysis (EDA), and insight generation based on airline customer reviews.
+---
+
+## 📌 Project Overview
+
+This project analyzes airline customer reviews and booking behavior to:
+
+- 📊 Understand customer satisfaction patterns  
+- 👥 Segment customers using K-Means Clustering  
+- 🎯 Predict booking probability using a Machine Learning Model  
+- 🌐 Deploy an interactive Streamlit Web Application  
+
+The goal is to simulate how an airline company can:
+- Identify high-value customers  
+- Detect bargain hunters  
+- Improve conversion rates  
+- Personalize marketing strategies  
+
+---
+
+## 🚀 Run the Application
+
+This project includes a fully working Streamlit Web App.
+
+### Run Locally:
+
+```bash
+streamlit run app.py
+```
+
+The app:
+- Detects customer segment
+- Predicts booking probability
+- Displays business-friendly insights
+
+---
 
 ## 📂 Project Structure
 
 ```
-├── BA_Data_Scraping.py               # Python script for scraping customer reviews
-├── British_Airways_Task1.ipynb        # Notebook for data scraping and cleaning
-├── British_Airways_Task2.ipynb        # Notebook for EDA and visualizations
-├── British_Airways_Data.csv           # Scraped and cleaned customer reviews data
-├── customer_booking.csv               # Provided dataset with customer booking details
-├── British_Airways_Task1.pptx         # Presentation for Task 1 (Scraping & Cleaning)
-├── British_Airways_Task2.pptx         # Presentation for Task 2 (Analysis & Insights)
-├── README.md                          # Project documentation
+├── Airways_Task1.ipynb        # Web scraping & review analysis
+├── Airways_Task2.ipynb        # ML modeling & segmentation
+├── app.py                     # Streamlit web application
+├── model.pkl                  # Booking prediction model
+├── kmeans.pkl                 # Customer segmentation model
+├── scaler.pkl                 # Feature scaling object
+├── README.md
 ```
 
-## 📊 Datasets
+---
 
-The project utilizes two primary datasets:
+## 🧠 Project Components
 
-1. **British_Airways_Data.csv**  
-   - Scraped customer reviews from Skytrax.
-   - Contains fields like Name, Location, Date, Review Title, Full Review Text, Rating, and Service Attributes.
+### 1️⃣ Customer Review Analysis
 
-2. **customer_booking.csv**  
-   - Provided customer data including:
-     - **Booking Details**
-     - **Revenue Information**
-     - **Customer Behavior Attributes**
+- Scraped airline reviews
+- Cleaned & structured rating features
+- Generated WordClouds for:
+  - Recommended Reviews
+  - Not Recommended Reviews
+- Analyzed:
+  - Seat Comfort
+  - Cabin Staff Service
+  - Food & Beverages
+  - Inflight Entertainment
+  - WiFi & Connectivity
+  - Value for Money
 
-## 🚀 Installation
+### Key Insights:
+- First Class & Business Class have highest ratings
+- WiFi & Value for Money are major complaint areas
+- Strong relationship between service ratings and recommendation
 
-### 1️⃣ Clone the repository:
+---
+
+### 2️⃣ Customer Segmentation (K-Means)
+
+Used features:
+- Number of passengers  
+- Purchase lead time  
+- Stay duration  
+- Flight duration  
+
+Customers grouped into:
+
+| Segment | Description |
+|----------|------------|
+| Big Spenders | Early planners, longer stays |
+| Bargain Hunters | Short lead time, price sensitive |
+| Occasional Shoppers | Moderate booking behavior |
+
+Business Use:
+- Targeted promotions
+- Premium upsell offers
+- Personalized campaigns
+
+---
+
+### 3️⃣ Booking Prediction Model
+
+Built a classification model to predict:
+
+> Will the customer complete the booking?
+
+- Trained on structured booking dataset
+- Uses predict_proba() for probability output
+- Integrated into Streamlit app
+
+Example Output:
+
+Segment: Big Spenders  
+Booking Probability: 78%  
+Status: High chance of conversion  
+
+---
+
+## 📊 Exploratory Data Analysis
+
+Visualizations include:
+
+- Rating Distribution
+- Recommended vs Not Recommended
+- Seat Type vs Average Rating
+- WordCloud Analysis
+- Service Feature Distribution
+
+These insights explain:
+- What drives satisfaction
+- What affects recommendation
+- Where improvement is needed
+
+---
+
+## 🛠️ Tech Stack
+
+- Python
+- Pandas & NumPy
+- Matplotlib & Seaborn
+- WordCloud
+- Scikit-Learn
+- XGBoost (or ML Classifier)
+- Streamlit
+- Joblib
+
+---
+
+## 📈 Business Impact
+
+This system helps airlines:
+
+- Identify high-conversion customers  
+- Improve marketing ROI  
+- Reduce abandoned bookings  
+- Personalize customer experience  
+- Make data-driven decisions  
+
+---
+
+## 🔧 Installation
+
+### 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/27abhishek27/British-Airways-Job-Simulation.git
-cd British-Airways-Job-Simulation
+git clone https://github.com/Ashutoshrana434/Airways-Customer-Segmentation-Booking-Predictor.git
+cd Airways-Customer-Segmentation-Booking-Predictor
 ```
 
-### 2️⃣ Install dependencies:
-
-Ensure you have the following Python packages installed:
-
-- `requests`
-- `beautifulsoup4`
-- `pandas`
-- `numpy`
-- `matplotlib`
-- `seaborn`
-- `wordcloud`
-- `scikit-learn` *(optional for deeper analysis)*
-
-Install them with:
+### 2️⃣ Install Dependencies
 
 ```bash
-pip install requests beautifulsoup4 pandas numpy matplotlib seaborn wordcloud scikit-learn
+pip install pandas numpy matplotlib seaborn scikit-learn xgboost streamlit wordcloud joblib
 ```
 
-## 🔍 Methodology
+### 3️⃣ Run Application
 
-### 1. **Web Scraping**
+```bash
+streamlit run app.py
+```
 
-- **Target Website**: Skytrax Airline Quality Reviews.
-- **Scraping Details**: Customer name, location, review title, full review, ratings, verification status, and service quality parameters.
-
-### 2. **Data Cleaning**
-
-- **Handling Missing Data**: Identified and removed/replaced missing values.
-- **Feature Engineering**: Extracted and structured fields like Travel Class, Type of Traveller, Seat Type, etc.
-
-### 3. **Exploratory Data Analysis (EDA)**
-
-- **Review Sentiment Analysis**: Analyzed review text to understand customer sentiment trends.
-- **Ratings Distribution**: Explored how different customer ratings are distributed.
-- **Top Complaints & Praise**: Word clouds and frequency analysis of key themes.
-- **Class of Travel Analysis**: Studied ratings across Economy, Premium Economy, Business, and First Class.
-
-### 4. **Presentation**
-
-- Summarized findings into two clear PowerPoint presentations:
-  - Task 1: Data Scraping & Cleaning
-  - Task 2: Insights & Recommendations
-
-## 📊 Visualizations
-
-Some visualizations generated during the analysis include:
-
-![alt text](https://github.com/27abhishek27/British-Airways-Job-Simulation/blob/main/British_Airways_Task1_png/histogram.png)
-![alt text](https://github.com/27abhishek27/British-Airways-Job-Simulation/blob/main/British_Airways_Task1_png/Rating.png)
-![alt text](https://github.com/27abhishek27/British-Airways-Job-Simulation/blob/main/British_Airways_Task1_png/full%20reviewpng.png)
-![alt text](https://github.com/27abhishek27/British-Airways-Job-Simulation/blob/main/British_Airways_Task1_png/recommended.png)
-
-*(Presentations contain detailed visuals.)*
-
-## 🛠️ Technologies Used
-
-- **Python**
-- **BeautifulSoup & Requests** (for web scraping)
-- **Pandas & NumPy** (for data manipulation)
-- **Matplotlib & Seaborn** (for visualization)
-- **WordCloud** (for textual analysis)
-- **Jupyter Notebook**
+---
 
 ## 📌 Future Improvements
 
-- **Sentiment Modeling**: Build machine learning models to predict customer satisfaction.
-- **Dynamic Scraping**: Use Selenium or Playwright to scrape dynamically loaded content.
-- **Dashboarding**: Develop interactive dashboards using Tableau, Power BI, or Plotly Dash for management reporting.
+- Deploy on Streamlit Cloud / Render
+- Add SHAP explainability
+- Add interactive dashboard
+- Add NLP sentiment analysis
+- Improve feature engineering
+
+---
+
+## 👨‍💻 Author
+
+Ashutosh Rana  
+MCA | Data Science Enthusiast  
+Focused on ML, Customer Analytics & End-to-End AI Systems  
+
+---
+
+## ⭐ Why This Project Is Resume-Strong
+
+This project demonstrates:
+
+- Real-world business problem solving
+- Unsupervised Learning (Clustering)
+- Supervised Learning (Classification)
+- Model Deployment
+- Feature Engineering
+- Business Interpretation
+- End-to-End ML Pipeline
