@@ -3,7 +3,7 @@
 > End-to-End Machine Learning Project combining Customer Review Analysis, Segmentation & Booking Prediction
 
 ---
-
+Live App https://airways-customer-segmentation-booking-predictor-i8uqbfiqo6ubiu.streamlit.app/
 ## 📌 Project Overview
 
 This project analyzes airline customer reviews and booking behavior to:
